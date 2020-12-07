@@ -1,0 +1,24 @@
+.filter__wrap{
+  padding: 15px;
+border-radius: 5px;
+background-color: white;
+position: relative;
+box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+margin-bottom: 40px;
+}
+
+.form__input {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-size: 1.2rem;
+      margin: 5px;
+      padding: 10px;
+    border-radius: 0.2rem;
+    border: 1px solid  #bbccd6;
+    background-color: rgb(255, 255, 255);
+    
+    width: 90%;
+    display: block;
+    
+    transition: all 0.3s;
+  }

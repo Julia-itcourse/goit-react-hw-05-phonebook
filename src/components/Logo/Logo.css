@@ -1,0 +1,14 @@
+.Logo-slideIn-appear{
+    transform: translateX(-100%);
+
+}
+
+.Logo-slideIn-appear-active{
+    transform: translateX(0);
+    transition: transform 500ms linear;
+}
+
+.Logo{
+    font-family: 'Lobster Two';
+    font-size: 50px;
+}
