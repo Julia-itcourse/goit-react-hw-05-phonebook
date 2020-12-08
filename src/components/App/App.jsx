@@ -17,7 +17,7 @@ class App extends Component {
     filter: "",
     name: "",
     number: "",
-    error: "false",
+    showNotification: false
   }
 
   componentDidMount() {
@@ -40,9 +40,9 @@ class App extends Component {
     const sameContact = this.state.contacts.find(
       (contact) => contact.name === newContact.name
     )
-    // ? alert(`${newContact.name} is already in the phonebook!`)
     if (sameContact) {
-      this.setState({ showAlert: true })
+      this.setState({ showNotification: true });
+      setTimeout(() => this.setState({ showNotification: false }), 1500);
     } else {
       this.setState((prevState) => {
         return {
@@ -74,7 +74,7 @@ class App extends Component {
         <Logo />
         </CSSTransition>
 
-        <PhonebookForm onAddContact={this.onAddContact} />
+        <PhonebookForm onAddContact={this.onAddContact}   notification={this.state.showNotification} />
 
         {this.state.contacts.length > 1 && (
           <Filter

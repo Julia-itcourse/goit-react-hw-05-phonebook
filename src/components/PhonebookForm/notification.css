@@ -1,0 +1,22 @@
+.notification-enter
+{
+
+ transform: translateX(100%);
+}
+
+.notification-enter-active
+{
+
+ transform: translateX(0);
+ transition: all 250ms ease-in;
+}
+.notification-exit {
+
+ transform: translateX(0);
+}
+
+.notification-exit-active{
+
+ transform: translateX(100%);
+ transition: all 250ms ease-in;
+} 
