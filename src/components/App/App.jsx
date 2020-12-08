@@ -2,7 +2,9 @@ import React, { Component } from "react"
 import ContactList from "../ContactList"
 import PhonebookForm from "../PhonebookForm"
 import Filter from "../Filter"
-import Logo from '../Logo'
+import Logo from "../Logo"
+import { CSSTransition } from "react-transition-group"
+
 
 class App extends Component {
   state = {
@@ -15,34 +17,39 @@ class App extends Component {
     filter: "",
     name: "",
     number: "",
+    error: "false",
   }
 
-componentDidMount(){
-  const persistedContacts = localStorage.getItem('contacts');
+  componentDidMount() {
+    const persistedContacts = localStorage.getItem("contacts")
 
-  if (persistedContacts){
-    this.setState({
-      contacts: JSON.parse(persistedContacts),
-    })
+    if (persistedContacts) {
+      this.setState({
+        contacts: JSON.parse(persistedContacts),
+      })
+    }
   }
-}
 
-  componentDidUpdate(prevProps, prevState){
-  if (prevState.contacts !== this.state.contacts){
-  localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts))
+    }
   }
 
   onAddContact = (newContact) => {
-    this.state.contacts.find((contact) => contact.name === newContact.name)
-      ? alert(`${newContact.name} is already in the phonebook!`)
-      : this.setState((prevState) => {
-          return {
-            contacts: [...prevState.contacts, newContact],
-          }
-        })
-
-    console.log("Contacts in onAddContact", this.state.contacts)
+    const sameContact = this.state.contacts.find(
+      (contact) => contact.name === newContact.name
+    )
+    // ? alert(`${newContact.name} is already in the phonebook!`)
+    if (sameContact) {
+      this.setState({ showAlert: true })
+    } else {
+      this.setState((prevState) => {
+        return {
+          contacts: [...prevState.contacts, newContact],
+        }
+      })
+    }
   }
 
   onRemoveContact = (contactId) => {
@@ -63,9 +70,12 @@ componentDidMount(){
     )
     return (
       <>
-        <Logo/>
+      <CSSTransition in={true} appear = {true} timeout = {500} classNames = "Logo-slideIn">
+        <Logo />
+        </CSSTransition>
+
         <PhonebookForm onAddContact={this.onAddContact} />
-     
+
         {this.state.contacts.length > 1 && (
           <Filter
             value={this.state.filter}

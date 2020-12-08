@@ -5,7 +5,7 @@ import {CSSTransition, TransitionGroup} from 'react-transition-group'
 import './ContactList.css'
 
 const ContactList = ({ contacts, onRemoveContact }) => {
-  console.log("contacts in ContactList", contacts)
+  
   return (
    
    
@@ -23,17 +23,6 @@ const ContactList = ({ contacts, onRemoveContact }) => {
     
   )
 
-  //   <TransitionGroup component = "ul" className = 'ContactList'>
-  //     {contacts.map((item) => (
-  //       <ContactItem
-  //         key={item.id}
-  //         contact={item}
-  //         onRemoveContact={() => onRemoveContact(item.id)}
-  //       />
-  //     ))}
-  //   </TransitionGroup>
-    
-  // )
 }
 
 ContactList.propTypes = {
