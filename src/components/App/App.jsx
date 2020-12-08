@@ -75,20 +75,26 @@ class App extends Component {
         </CSSTransition>
 
         <PhonebookForm onAddContact={this.onAddContact}   notification={this.state.showNotification} />
+        <CSSTransition
+            in={this.state.contacts.length > 1}
+            timeout={500}
+            classNames={"filter"}
+            unmountOnExit
+          >
 
-        {this.state.contacts.length > 1 && (
           <Filter
             value={this.state.filter}
             onChangeFilter={this.onChangeFilter}
           />
-        )}
-
-        {this.state.contacts.length > 0 && (
+          </CSSTransition>
+        
+  
+        
           <ContactList
             contacts={filteredContacts}
             onRemoveContact={this.onRemoveContact}
           />
-        )}
+       
       </>
     )
   }

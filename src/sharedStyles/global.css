@@ -21,3 +21,62 @@ body {
   height: 100vh;
   color: #687864;
 }
+
+
+
+.filter-enter {
+  opacity: 0;
+  scale: 0.1;
+}
+
+.filter-enter-active {
+  opacity: 1;
+  scale: 1;
+  transition: all 500ms linear;
+}
+
+.filter-exit {
+  opacity: 1;
+  scale: 1;
+}
+
+.filter-exit-active {
+  opacity: 0;
+  scale: 0.1;
+  transition: all 500ms linear;
+}
+
+.filter-appear {
+  opacity: 0;
+  scale: 0.1;
+}
+
+.filter-appear-active {
+  opacity: 1;
+  scale: 1;
+  transition: all 500ms linear;
+}
+
+
+
+.contactItem-fade-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.contactItem-fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 250ms linear;
+}
+
+.contactItem-fade-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contactItem-fade-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 250ms linear;
+}
